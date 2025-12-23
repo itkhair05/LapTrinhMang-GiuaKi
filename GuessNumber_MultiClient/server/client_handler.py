@@ -1,4 +1,5 @@
 import time
+from config import MIN_NUMBER, MAX_NUMBER
 
 def handle_client(conn, addr, server):
     client_id = server.next_client_id()
@@ -18,12 +19,27 @@ def handle_client(conn, addr, server):
                 continue
 
             if data.startswith("GUESS:"):
+                # Kiểm tra còn lượt đoán không
                 if guess_count >= server.max_guess:
                     conn.sendall("THÔNG BÁO:Bạn đã hết lượt đoán\n".encode())
                     continue
 
+                # Parse số
+                try:
+                    number = int(data.split(":")[1])
+                except:
+                    conn.sendall("THÔNG BÁO:Giá trị nhập vào không hợp lệ\n".encode())
+                    continue
+
+                # Kiểm tra phạm vi số
+                if number < MIN_NUMBER or number > MAX_NUMBER:
+                    conn.sendall(
+                        f"THÔNG BÁO:Số phải nằm trong khoảng {MIN_NUMBER} - {MAX_NUMBER}\n".encode()
+                    )
+                    continue  # ❗ KHÔNG trừ lượt
+
+                # Tăng lượt đoán
                 guess_count += 1
-                number = int(data.split(":")[1])
 
                 result = server.game.check_guess(number)
 
