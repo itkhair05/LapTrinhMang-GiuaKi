@@ -1,2 +1,2 @@
-Protocol minigame đoán số - Thanhhnguen
+Protocol minigame đoán số
 Client gửi số đoán, server trả HIGH/LOW/CORRECT.

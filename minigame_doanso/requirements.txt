@@ -1,8 +1,6 @@
 # Các thư viện mặc định của Python:
-# - socket
-# - threading
-# - tkinter
-# - random
+socket
+threading
+tkinter
+random
 
-# Thư viện xử lý ảnh (load ảnh png)
-Pillow
