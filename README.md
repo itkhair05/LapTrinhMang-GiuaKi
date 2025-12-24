@@ -1,41 +1,44 @@
-📌 Giới thiệu
+# 🎮 Mini Game Đoán Số – Lập Trình Mạng (Giữa Kỳ)
 
-Đây là dự án lập trình mạng Python theo mô hình Client – Server, phục vụ bài giữa kỳ môn Lập Trình Mạng.
+## 📌 Giới thiệu
 
-Ứng dụng là một mini game đoán số:
+Đây là **dự án lập trình mạng Python** theo mô hình **Client – Server**, phục vụ bài **giữa kỳ môn Lập Trình Mạng**.
 
-Server sinh ra một số ngẫu nhiên.
+Ứng dụng là một **mini game đoán số**:
 
-Nhiều client có thể kết nối đồng thời.
-
-Client gửi số dự đoán.
-
-Server phản hồi kết quả: HIGH / LOW / CORRECT.
+* Server sinh ra một số ngẫu nhiên.
+* Nhiều client có thể kết nối đồng thời.
+* Client gửi số dự đoán.
+* Server phản hồi kết quả: **HIGH / LOW / CORRECT**.
 
 Dự án tập trung vào:
 
-Lập trình socket TCP
+* Lập trình socket TCP
+* Xử lý đa luồng (threading)
+* Giao tiếp client–server
+* Thiết kế code theo module (OOP)
 
-Xử lý đa luồng (threading)
+---
 
-Giao tiếp client–server
+## 🧱 Kiến trúc hệ thống
 
-Thiết kế code theo module (OOP)
-
-🧱 Kiến trúc hệ thống
+```text
 Client (Tkinter GUI)
    │
    │ TCP Socket
    ▼
 Server (Multi-thread)
+```
 
-Server: Python Socket + Threading
+* **Server**: Python Socket + Threading
+* **Client**: Python + Tkinter GUI
+* **Giao thức**: Text-based protocol đơn giản
 
-Client: Python + Tkinter GUI
+---
 
-Giao thức: Text-based protocol đơn giản
+## 📁 Cấu trúc thư mục
 
-📁 Cấu trúc thư mục
+```text
 LapTrinhMang-GiuaKi-main/
 │
 ├── anhsanpham/
@@ -59,110 +62,133 @@ LapTrinhMang-GiuaKi-main/
 │   │   └── protocol.txt    # Mô tả giao thức
 │   │
 │   └── requirements.txt    # Thư viện cần cài
-🔌 Giao thức truyền thông
+```
 
-File: docs/protocol.txt
+---
 
+## 🔌 Giao thức truyền thông
+
+File: `docs/protocol.txt`
+
+```text
 Client gửi số đoán
 Server trả về:
 - HIGH     (Số đoán lớn hơn số bí mật)
 - LOW      (Số đoán nhỏ hơn số bí mật)
 - CORRECT  (Đoán đúng)
-⚙️ Công nghệ sử dụng
+```
 
-Ngôn ngữ: Python 3
+---
 
-Networking: socket (TCP)
+## ⚙️ Công nghệ sử dụng
 
-Đa luồng: threading
+* **Ngôn ngữ**: Python 3
+* **Networking**: socket (TCP)
+* **Đa luồng**: threading
+* **Giao diện**: Tkinter
+* **Mô hình**: Client – Server
 
-Giao diện: Tkinter
+---
 
-Mô hình: Client – Server
+## ▶️ Hướng dẫn cài đặt & chạy
 
-▶️ Hướng dẫn cài đặt & chạy
-1️⃣ Cài đặt môi trường
+### 1️⃣ Cài đặt môi trường
+
+```bash
 pip install -r requirements.txt
+```
 
-(Tkinter thường đã có sẵn trong Python)
+> (Tkinter thường đã có sẵn trong Python)
 
-2️⃣ Chạy Server
+---
+
+### 2️⃣ Chạy Server
+
+```bash
 cd minigame_doanso/server
 python server.py
+```
 
 Server sẽ:
 
-Lắng nghe kết nối client
+* Lắng nghe kết nối client
+* Sinh số ngẫu nhiên
+* Xử lý nhiều client cùng lúc
 
-Sinh số ngẫu nhiên
+---
 
-Xử lý nhiều client cùng lúc
+### 3️⃣ Chạy Client
 
-3️⃣ Chạy Client
+```bash
 cd minigame_doanso/client
 python client_gui.py
+```
 
-Nhập số vào ô input
+* Nhập số vào ô input
+* Nhấn **Guess** để gửi lên server
+* Nhận phản hồi trực tiếp trên giao diện
 
-Nhấn Guess để gửi lên server
+---
 
-Nhận phản hồi trực tiếp trên giao diện
+## ✨ Chức năng chính
 
-✨ Chức năng chính
-Server
+### Server
 
-Lắng nghe nhiều client cùng lúc
+* Lắng nghe nhiều client cùng lúc
+* Quản lý game đoán số
+* Phản hồi chính xác HIGH / LOW / CORRECT
+* Giới hạn số lần đoán
 
-Quản lý game đoán số
+### Client
 
-Phản hồi chính xác HIGH / LOW / CORRECT
+* Giao diện đồ họa thân thiện
+* Kết nối socket đến server
+* Gửi số đoán
+* Hiển thị kết quả từ server
 
-Giới hạn số lần đoán
+---
 
-Client
+## 🔒 Điểm kỹ thuật nổi bật
 
-Giao diện đồ họa thân thiện
+* Sử dụng **Threading** để xử lý đa client
+* Tách rõ **network – logic – UI**
+* Dễ mở rộng sang:
 
-Kết nối socket đến server
+  * Chat real-time
+  * Game nhiều phòng
+  * Ghi log người chơi
 
-Gửi số đoán
+---
 
-Hiển thị kết quả từ server
+## 🚀 Hướng phát triển
 
-🔒 Điểm kỹ thuật nổi bật
+* Thêm hệ thống điểm số
+* Giới hạn thời gian đoán
+* Chat giữa các client
+* Deploy server trên VPS
+* Chuyển sang WebSocket / gRPC
 
-Sử dụng Threading để xử lý đa client
+---
 
-Tách rõ network – logic – UI
+## 👨‍🎓 Thông tin môn học
 
-Dễ mở rộng sang:
+* **Môn**: Lập Trình Mạng
+* **Bài**: Giữa kỳ
+* **Chủ đề**: Ứng dụng Client–Server chịu tải cơ bản
 
-Chat real-time
+---
 
-Game nhiều phòng
+## 📜 License
 
-Ghi log người chơi
+Dự án phục vụ mục đích **học tập**.
 
-🚀 Hướng phát triển
+---
 
-Thêm hệ thống điểm số
+✅ README này có thể dùng **nộp bài / GitHub / báo cáo**.
+Nếu bạn muốn mình:
 
-Giới hạn thời gian đoán
+* Viết **báo cáo Word/PDF**
+* Vẽ **sơ đồ kiến trúc**
+* Đánh giá theo **rubric giảng viên**
 
-Chat giữa các client
-
-Deploy server trên VPS
-
-Chuyển sang WebSocket / gRPC
-
-👨‍🎓 Thông tin môn học
-
-Môn: Lập Trình Mạng
-
-Bài: Giữa kỳ
-
-Chủ đề: Ứng dụng Client–Server chịu tải cơ bản
-
-📜 License
-
-Dự án phục vụ mục đích học tập.
+👉 cứ nói, mình làm tiếp cho bạn.
