@@ -181,14 +181,3 @@ python client_gui.py
 ## 📜 License
 
 Dự án phục vụ mục đích **học tập**.
-
----
-
-✅ README này có thể dùng **nộp bài / GitHub / báo cáo**.
-Nếu bạn muốn mình:
-
-* Viết **báo cáo Word/PDF**
-* Vẽ **sơ đồ kiến trúc**
-* Đánh giá theo **rubric giảng viên**
-
-👉 cứ nói, mình làm tiếp cho bạn.
